@@ -20,6 +20,7 @@ abstract class TestCase extends Orchestra
     protected function defineEnvironment($app): void
     {
         $app['config']->set('database.default', 'testing');
+        $app['config']->set('app.key', 'base64:'.base64_encode(str_repeat('a', 32)));
         $app['config']->set('stripe-billing.secret', 'sk_test_dummy');
         $app['config']->set('stripe-billing.webhook_secret', self::WEBHOOK_SECRET);
         $app['config']->set('stripe-billing.prices.pro', 'price_pro_123');
